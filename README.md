@@ -1,88 +1,160 @@
-🧠 AI Resume Analyzer
+# 🧠 AI Resume Analyzer
 
-A production-quality web app that analyzes your resume against a job description using NLP and OCR — giving you a match score, skill gap analysis, and actionable improvement tips.
+A production-quality web app that analyzes your resume against a job description using NLP — giving you a match score, skill gap analysis, and actionable improvement tips.
 
-✨ Features
-Feature	Description
-📄 PDF Upload	Extracts text from PDF resumes
-🖼️ Image Upload	Supports JPG / JPEG / PNG resumes using OCR
-🎯 Match Score	TF-IDF cosine similarity + skill overlap
-✅ Skill Detection	150+ skills across tech, data, cloud, soft skills
-❌ Gap Analysis	Identifies missing skills from job description
-💡 Suggestions	Smart improvement recommendations
-🔍 Keyword Highlight	Highlights important JD keywords
-🎨 Modern UI	Clean and responsive Streamlit interface
-🚀 Quick Start
-1. Clone / Download
-git clone https://github.com/yourname/ai-resume-analyzer.git
-cd ai-resume-analyzer
-2. Create virtual environment
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---|---|
+| 📄 PDF Upload | Extracts text from any PDF resume |
+| 🖼️ Image Upload Supports JPG / JPEG / PNG resumes using OCR |
+| 🎯 Match Score | Hybrid TF-IDF cosine similarity + skill overlap |
+| ✅ Skill Detection | 150+ skills across tech, data, cloud, soft skills |
+| ❌ Gap Analysis | Shows exactly which skills you're missing |
+| 💡 Suggestions | Contextual, content-aware improvement tips |
+| 🔍 Keyword Highlight | Highlights missing keywords in the JD |
+| 🎨 Modern UI | Dark-themed, animated, mobile-friendly Streamlit app |
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone / Download
+
+```bash
+git clone https://github.com/sidcloudio/AI-esume-Analyzer.git
+cd AI-esume-Analyzer
+```
+
+### 2. Create a virtual environment (recommended)
+
+```bash
 python -m venv venv
 source venv/bin/activate      # macOS / Linux
 venv\Scripts\activate         # Windows
-3. Install dependencies
+```
+
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
-4. Install spaCy model
+```
+
+### 4. Download the spaCy language model
+
+```bash
 python -m spacy download en_core_web_sm
-5. Install Tesseract OCR (IMPORTANT for images)
+```
 
-👉 Required for image-based resume extraction
-Tesseract OCR
+### 5. Run the app
 
-Make sure Tesseract is installed and path is set in code:
-
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-6. Run the app
+```bash
 streamlit run app.py
+```
 
-App will open at:
+The app will open automatically at `http://localhost:8501`
 
-http://localhost:8501
-📁 Project Structure
+---
+
+## 📁 Project Structure
+
+```
 ai_resume_analyzer/
 │
-├── app.py              # Streamlit UI (PDF + Image upload)
-├── utils.py            # NLP + OCR + scoring logic
-├── requirements.txt    # Dependencies
-├── README.md
-└── venv/
-🧠 How It Works
-Resume Upload (PDF / Image)
-        │
-        ├── PDF → PyPDF2 text extraction
-        └── Image → OCR (Tesseract)
-                     │
-                     ▼
-        Text Preprocessing (spaCy NLP)
-                     │
-                     ├── Skill Extraction (150+ skills)
-                     │
-                     ▼
-        TF-IDF + Cosine Similarity
-                     │
-                     ▼
-        Match Score (0–100%)
-                     │
-                     ▼
-        Gap Analysis + Suggestions
-📊 Match Score Formula
-Match Score =
-(0.6 × TF-IDF Similarity) + (0.4 × Skill Overlap)
-🛠️ Tech Stack
-Library	Purpose
-Streamlit	Web UI
-PyPDF2	PDF parsing
-pytesseract	Image OCR
-spaCy	NLP processing
-scikit-learn	ML similarity
-⚠️ Notes
-Image resumes must be clear for best OCR results
-Scanned PDFs may need OCR conversion
-Tesseract must be installed for image support
-🤝 Contributing
+├── app.py              # Main Streamlit application + UI
+├── utils.py            # NLP helpers + OCR + scoring logic (extraction, scoring, suggestions)
+├── requirements.txt    # Python dependencies
+└── README.md           # This file
+```
 
-Pull requests are welcome. For major changes, open an issue first.
+---
 
-📄 License
+## 🧠 How It Works
 
-MIT License — free to use and modify.
+```
+PDF/Image Upload
+    │
+    ▼
+OCR(Tesseract)
+     │
+     ▼
+PyPDF2 Text Extraction
+    │
+    ▼
+spaCy NLP Preprocessing
+(tokenize → lowercase → remove stopwords)
+    │
+    ├──► Skill Extraction (150+ skill DB + NER)
+    │
+    ▼
+TF-IDF Vectorization (scikit-learn)
+    │
+    ▼
+Cosine Similarity + Skill Overlap  →  Match Score (0–100%)
+    │
+    ▼
+Gap Analysis + Contextual Suggestions → Displayed in UI
+```
+
+### Match Score Formula
+
+```
+Match Score = (TF-IDF Cosine Similarity × 0.60) + (Skill Overlap Ratio × 0.40)
+```
+
+---
+
+## 🖥️ Screenshots
+
+> _Run the app and upload a resume to see the full dashboard._
+
+**Key UI Sections:**
+- **Hero header** with gradient title
+- **Upload + JD input** side-by-side
+- **Score card** with animated progress bar
+- **Stats row** (skills found / missing / JD keywords / suggestions)
+- **Skill tags** (green = found, red = missing)
+- **Suggestion cards** with icons
+- **Expandable panels** for highlighted JD and raw text
+
+---
+
+## ⚙️ Tech Stack
+
+| Library | Purpose |
+|---|---|
+| `streamlit` | Web UI framework |
+| `PyPDF2` | PDF text extraction |
+| `spacy` | NLP tokenization + NER |
+| `scikit-learn` | TF-IDF vectorization + cosine similarity |
+| `OCR` (Tesseract) | Image text extraction |
+| `pytesseract`  |   Python Integration |
+
+---
+
+## 🛠️ Troubleshooting
+
+**`spacy` model not found:**
+```bash
+python -m spacy download en_core_web_sm
+```
+
+
+**Port already in use:**
+```bash
+streamlit run app.py --server.port 8502
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, open an issue first.
+
+---
+
+## 📄 License
+
+MIT License — free to use, modify, and distribute.    isme mene pdf ke sath sath image(jpg,jpeg,png) add kiya hai usko implement krke readme vps de do
