@@ -1,0 +1,7 @@
+streamlit>=1.32.0
+PyPDF2>=3.0.1
+spacy>=3.7.2
+scikit-learn>=1.4.0
+pytesseract
+Pillow
+pdf2image
