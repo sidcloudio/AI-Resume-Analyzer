@@ -9,7 +9,7 @@ A production-quality web app that analyzes your resume against a job description
 | Feature | Description |
 |---|---|
 | 📄 PDF Upload | Extracts text from any PDF resume |
-| 🖼️ Image Upload Supports JPG / JPEG / PNG resumes using OCR |
+| 🖼️ Image Upload | Supports JPG / JPEG / PNG resumes using OCR |
 | 🎯 Match Score | Hybrid TF-IDF cosine similarity + skill overlap |
 | ✅ Skill Detection | 150+ skills across tech, data, cloud, soft skills |
 | ❌ Gap Analysis | Shows exactly which skills you're missing |
