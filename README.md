@@ -24,8 +24,8 @@ A production-quality web app that analyzes your resume against a job description
 ### 1. Clone / Download
 
 ```bash
-git clone https://github.com/sidcloudio/AI-esume-Analyzer.git
-cd AI-esume-Analyzer
+git clone https://github.com/Username/AI-Resume-Analyzer.git
+cd AI-Resume-Analyzer
 ```
 
 ### 2. Create a virtual environment (recommended)
@@ -51,7 +51,7 @@ python -m spacy download en_core_web_sm
 ### 5. Run the app
 
 ```bash
-streamlit run app.py
+streamlit run ai.py
 ```
 
 The app will open automatically at `http://localhost:8501`
@@ -63,7 +63,7 @@ The app will open automatically at `http://localhost:8501`
 ```
 ai_resume_analyzer/
 │
-├── app.py              # Main Streamlit application + UI
+├── ai.py              # Main Streamlit application + UI
 ├── utils.py            # NLP helpers + OCR + scoring logic (extraction, scoring, suggestions)
 ├── requirements.txt    # Python dependencies
 └── README.md           # This file
@@ -144,7 +144,7 @@ python -m spacy download en_core_web_sm
 
 **Port already in use:**
 ```bash
-streamlit run app.py --server.port 8502
+streamlit run ai.py --server.port 8502
 ```
 
 ---
